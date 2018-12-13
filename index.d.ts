@@ -2,7 +2,7 @@ declare module 'react-native-touch-id' {
     /**
      * The supported biometry type
      */
-    type BiometryType = 'FaceID' | 'TouchID';
+    type BiometryType = 'FaceID' | 'TouchID' | 'NotEnrolled';
   
     /**
      * Base config to pass to `TouchID.isSupported` and `TouchID.authenticate`
@@ -12,6 +12,10 @@ declare module 'react-native-touch-id' {
        * Return unified error messages
        */
       unifiedErrors?: boolean;
+      /**
+       * **iOS only** - By default set to false. If set to true, will allow use of keypad passcode.
+       */
+      enrolled?: boolean;
     }
   
     /**
