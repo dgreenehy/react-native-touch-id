@@ -15,7 +15,7 @@ RCT_EXPORT_METHOD(isSupported: (NSDictionary *)options
     // Check to see if we are enrolled
     NSNumber *enrolled = [NSNumber numberWithBool:true];
     if (RCTNilIfNull([options objectForKey:@"enrolled"]) != nil) {
-        enrolled = [RCTConvert NSNumber:options[@"passcodeFallback"]];
+        enrolled = [RCTConvert NSNumber:options[@"enrolled"]];
     }
 
     if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
