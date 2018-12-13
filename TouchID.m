@@ -12,17 +12,11 @@ RCT_EXPORT_METHOD(isSupported: (NSDictionary *)options
     LAContext *context = [[LAContext alloc] init];
     NSError *error;
 
-    // Check to see if we are enrolled
-    NSNumber *enrolled = [NSNumber numberWithBool:true];
-    if (RCTNilIfNull([options objectForKey:@"enrolled"]) != nil) {
-        enrolled = [RCTConvert NSNumber:options[@"enrolled"]];
-    }
-
     if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
 
         // No error found, proceed
         callback(@[[NSNull null], [self getBiometryType:context]]);
-    } else if ([!enrolled boolValue] && [context canEvaluatePolicy:LAPolicyDeviceOwnerAuthentication error:&error]) {
+    } else if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthentication error:&error]) {
 
         // No error
         callback(@[[NSNull null], [self getBiometryType:context]]);
