@@ -16,7 +16,7 @@ const { getError, TouchIDError, TouchIDUnifiedError } = require('./errors');
 export default {
   isSupported(config) {
     return new Promise((resolve, reject) => {
-      NativeTouchID.isSupported(config, (error, biometryType) => {
+      NativeTouchID.isSupported((error, biometryType) => {
         if (error) {
           return reject(createError(config, error.message));
         }
