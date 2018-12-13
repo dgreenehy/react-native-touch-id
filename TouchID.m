@@ -22,7 +22,7 @@ RCT_EXPORT_METHOD(isSupported: (NSDictionary *)options
 
         // No error found, proceed
         callback(@[[NSNull null], [self getBiometryType:context]]);
-    } else if ([enrolled boolValue] && [context canEvaluatePolicy:LAPolicyDeviceOwnerAuthentication error:&error]) {
+    } else if ([!enrolled boolValue] && [context canEvaluatePolicy:LAPolicyDeviceOwnerAuthentication error:&error]) {
 
         // No error
         callback(@[[NSNull null], [self getBiometryType:context]]);
